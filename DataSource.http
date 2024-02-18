@@ -1,0 +1,58 @@
+@baseURL = http://localhost:5296
+
+@agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36
+
+
+# https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat/data
+
+### JSON
+GET https://data.sfgov.org/api/views/rqzj-sfat/rows.json?accessType=DOWNLOAD
+User-Agent: {{agent}}
+Accept: application/json
+###
+### XML
+GET https://data.sfgov.org/api/views/rqzj-sfat/rows.xml?accessType=DOWNLOAD
+User-Agent: {{agent}}
+Accept: application/xml
+###
+### CSV
+GET https://data.sfgov.org/api/views/rqzj-sfat/rows.csv?accessType=DOWNLOAD
+User-Agent: {{agent}}
+Accept: text/csv
+###
+
+
+
+# Food Truck search API
+
+###
+GET {{baseURL}}/api/foodtrucks
+User-Agent: {{agent}}
+Accept: application/json
+###
+
+###
+POST {{baseURL}}/api/foodtrucks/search
+User-Agent: {{agent}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Latitude": 37.712303,
+  "Longitude": -122.43164,
+  "PreferredFood": "Tacos, salad"
+}
+###
+
+###
+POST {{baseURL}}/api/foodtrucks/search
+User-Agent: {{agent}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Latitude": 37.712303,
+  "Longitude": -122.43164,
+  "PreferredFood": "coffee, tea"
+}
+###
