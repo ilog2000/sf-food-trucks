@@ -29,7 +29,9 @@ function searchForm() {
     },
     // form submit function
     submitForm() {
-      fetch(FORM_URL, {
+      const pageSize = document.getElementById('nr-of-results').value;
+
+      fetch(`${FORM_URL}?pageSize=${pageSize}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

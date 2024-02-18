@@ -28,6 +28,15 @@
         <input type="text" class="form-control" id="search-terms" name="preferredFood" placeholder="Your preferred food..." required
           x-model="formData.preferredFood" />
       </div>
+      <div class="form-group mt-2">
+        <label for="nr-of-results" class="fw-semibold">Number of results:</label>
+        <select class="form-select" id="nr-of-results" name="pageSize">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+        </select>
+      </div>
       <button type="submit" class="btn btn-primary mt-2">Search</button>
     </form>
   </div>
