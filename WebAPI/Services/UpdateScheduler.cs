@@ -1,6 +1,6 @@
 namespace Services;
 
-public class UpdateScheduler : IHostedService
+public class UpdateScheduler : IHostedService, IDisposable
 {
     private readonly IDataUpdater _dataUpdater;
     private readonly ILogger<UpdateScheduler> _logger;
@@ -30,5 +30,10 @@ public class UpdateScheduler : IHostedService
     {
         _timer?.Change(Timeout.Infinite, 0);
         return Task.CompletedTask;
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
     }
 }
