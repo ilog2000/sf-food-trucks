@@ -10,6 +10,14 @@ builder.Logging.AddJsonConsole();
 // Add custom services
 builder.Services.RegisterServices();
 
+// Configure the host to ignore exceptions from background services
+builder.Services.Configure<HostOptions>(hostOptions =>
+{
+    hostOptions.BackgroundServiceExceptionBehavior = BackgroundServiceExceptionBehavior.Ignore;
+});
+// Add hosted service to update the dataset on schedule
+builder.Services.AddHostedService<UpdateScheduler>();
+
 var app = builder.Build();
 
 // Configure CORS with no restrictions
