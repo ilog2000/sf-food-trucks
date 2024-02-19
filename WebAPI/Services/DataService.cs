@@ -53,6 +53,7 @@ public class DataService : IDataService
         // More precise calculations can be done with the formula:
         // = acos(sin(lat1)*sin(lat2)+cos(lat1)*cos(lat2)*cos(lon2-lon1))*6371 (where 6371 is Earth radius in km),
         // but for our purposes, the simple formula is enough.
+        // In other words, here we think that the Earth is flat.
         return (float)Math.Sqrt(Math.Pow(lat2 - lat1, 2) + Math.Pow(lon2 - lon1, 2)) * 111.32f;
     }
 }
