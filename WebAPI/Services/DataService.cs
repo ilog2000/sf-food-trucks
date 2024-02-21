@@ -10,16 +10,16 @@ public class DataService : IDataService
 
     public IEnumerable<FoodTruckRecord> Records { get { return _lazyRecords.Value; } }
 
-    private static IEnumerable<FoodTruckRecord> LoadRecords()
+    private static IEnumerable<FoodTruckRecord> LoadRecords(string? fileName = null)
     {
-        using var reader = new StreamReader(Constants.CsvFileName);
+        using var reader = new StreamReader(fileName ?? Constants.CsvFileName);
         using var csv = new CsvReader(reader, CsvReaderConfig.DefaultCsvConfig);
         return csv.GetRecords<FoodTruckRecord>().ToList();
     }
 
-    public void Load()
+    public void Load(string? fileName = null)
     {
-        _lazyRecords = new Lazy<IEnumerable<FoodTruckRecord>>(() => LoadRecords());
+        _lazyRecords = new Lazy<IEnumerable<FoodTruckRecord>>(() => LoadRecords(fileName));
     }
 
     public IEnumerable<FoodTruckRecord> GetPage(int page, int pageSize)

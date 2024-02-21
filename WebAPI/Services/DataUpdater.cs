@@ -22,7 +22,7 @@ public class DataUpdater : IDataUpdater
         var url = _configuration[Constants.DatasetUrl];
         if (string.IsNullOrEmpty(url))
         {
-            var msg = "Dataset URL is not set";
+            const string msg = "Dataset URL is not set";
             _logger.LogError(msg);
             throw new InvalidOperationException(msg);
         }
